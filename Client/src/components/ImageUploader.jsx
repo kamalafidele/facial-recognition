@@ -27,7 +27,11 @@ function ImageUploader({ setUploadedImg }) {
     return (
         <UploaderContainer>
             <div className='file-input'>
-                <input type="file" onChange={(e) => setFile(e.target.files[0])} placeholder='Upload National Id Photo' id='file' />
+                <input type="file"
+                    onChange={(e) => setFile(e.target.files[0])}
+                    placeholder='Upload National Id Photo'
+                    id='file'
+                    accept='image/png, image/jpeg, image/jpg' />
                 <label htmlFor="file">Upload National ID Image</label>
             </div>
             <div className='img-preview'>

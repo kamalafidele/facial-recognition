@@ -22,7 +22,7 @@ async function drawBoundingBoxesOnID() {
     facesToCheckAIData = window.faceapi.resizeResults(facesToCheckAIData, faceToCheck);
     facesToCheckAIData.forEach((face) => {
         const { detection } = face;
-        let options = { label: 'Detected face' };
+        let options = { label: 'Detected face', boxColor: 'green' };
         const drawBox = new window.faceapi.draw.DrawBox(detection.box, options);
         drawBox.draw(canvas);
     });

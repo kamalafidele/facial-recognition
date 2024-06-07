@@ -20,7 +20,8 @@ function Home() {
     const [imgProcessed, setImgProcessed] = useState(false);
 
     const successMessage = 'The image matches with your national ID';
-    const failMessage = 'You image didn\'t match with the one on ID';
+    const failMessage = 'You image didn\'t match with the one on ID.';
+    const hintMessage = 'Make sure to upload a clear ID image and take a clear picture.';
 
     useEffect(() => {
         loadModels();
@@ -73,6 +74,7 @@ function Home() {
             {isLoading && <p className="process-msg">Processing your national id......</p>}
             {hasError && <p className="error-msg">We're having issues to process your ID. Try again!</p>}
             {!hasError && !isLoading && !isfaceRecognized && isPictureCaptured && imgProcessed && <p style={{ color: 'red'}}>{failMessage}</p>}
+            {!hasError && !isLoading && !isfaceRecognized && isPictureCaptured && imgProcessed && <p style={{ color: 'red'}}>{hintMessage}</p>}
             {!hasError && !isLoading && isfaceRecognized && isPictureCaptured && <p style={{ color: 'green'}}>{successMessage}</p>}
         </Container>
     )
