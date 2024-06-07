@@ -30,7 +30,7 @@ python3 -r requqirements
 
 * Starting the Server
 ```
-python3 face-recognition
+python3 face-recognition.py
 ```
 
 * Starting the Client
