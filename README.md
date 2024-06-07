@@ -14,13 +14,17 @@ Then If it matches, you direct to a page saying success.
 
 ### Installing
 
-* Installing Depencies for Server:
+#### Installing Depencies for Server:
 - Go into Server director
-- python3 -r requqirements
+```
+python3 -r requqirements
+```
 
-* Installing Depencies for client: 
+#### Installing Depencies for client: 
 - Go into Client directory
-- npm i
+```
+ npm i
+```
 
 ### Executing program
 
