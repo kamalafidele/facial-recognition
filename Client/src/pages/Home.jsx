@@ -17,6 +17,7 @@ function Home() {
     const [isLoading, setIsLoading] = useState(false);
     const [hasError, setHasError] = useState(false);
     const [isfaceRecognized, setIsFaceRecognized] = useState(false);
+    const [imgProcessed, setImgProcessed] = useState(false);
 
     const successMessage = 'The image matches with your national ID';
     const failMessage = 'You image didn\'t match with the one on ID';
@@ -28,6 +29,7 @@ function Home() {
     const getUploadedImg = img_uploaded => {
         setUploadedImg(img_uploaded);
         setIdUploaded(true);
+        setImgProcessed(false);
     }
 
     const getCapturedImg = (img_captured_uri) => {
@@ -38,6 +40,7 @@ function Home() {
     const getFacialRecognitionResults = async () => {
         setIsFaceRecognized(false);
         setIsLoading(true);
+        setImgProcessed(false);
         try {
             await drawBoundingBoxesOnID();
             const formData = new FormData();
@@ -49,6 +52,7 @@ function Home() {
                 setIsFaceRecognized(true);
             }
             console.log(data);
+            setImgProcessed(true);
         } catch (e) {
             console.log('BE Error: ', e);
             setHasError(true);
@@ -68,7 +72,7 @@ function Home() {
             {idUploaded && isPictureCaptured && !isLoading && <button onClick={getFacialRecognitionResults} className="process-btn">Start process</button>}
             {isLoading && <p className="process-msg">Processing your national id......</p>}
             {hasError && <p className="error-msg">We're having issues to process your ID. Try again!</p>}
-            {!hasError && !isLoading && !isfaceRecognized && isPictureCaptured && <p>{failMessage}</p>}
+            {!hasError && !isLoading && !isfaceRecognized && isPictureCaptured && imgProcessed && <p style={{ color: 'red'}}>{failMessage}</p>}
             {!hasError && !isLoading && isfaceRecognized && isPictureCaptured && <p style={{ color: 'green'}}>{successMessage}</p>}
         </Container>
     )
