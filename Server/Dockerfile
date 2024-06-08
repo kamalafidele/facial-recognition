@@ -15,10 +15,9 @@ COPY requirements.txt .
 
 RUN python -m ensurepip --upgrade
 RUN python -m pip install --upgrade setuptools
-RUN pip install wheel
 
 # Install dependencies
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install -r requirements.txt
 
 # Copy the entire application code
 COPY . .
