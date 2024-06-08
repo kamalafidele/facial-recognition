@@ -5,6 +5,8 @@ ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
 RUN apk update && apk add mesa-gl
+RUN apk add build-base
+RUN apk add autoconf automake libtool
 # Create and set the working directory
 WORKDIR /app
 
