@@ -16,6 +16,9 @@ COPY requirements.txt .
 RUN python -m ensurepip --upgrade
 RUN python -m pip install --upgrade setuptools
 
+RUN pip install "cython<3.0.0" wheel
+RUN pip install "pyyaml==5.4.1" --no-build-isolation
+
 # Install dependencies
 RUN pip install -r requirements.txt
 
